@@ -175,7 +175,7 @@ textarea:focus-visible {
   font-size: 1.7em;
   margin-bottom: 0.3em;
 }
-.item-info__price {
+.single__item-info-part .price {
   font-size: 1.1em;
   margin-bottom: 2.5em;
 }

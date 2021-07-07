@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from './common/button/button';
 import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
+import Price from './common/price/price';
 
 class ShopSingleItem extends Component {
   constructor() {
@@ -65,7 +66,7 @@ class ShopSingleItem extends Component {
           </div>
           <div className="single__item-info-part">
             <h2 className="item-info__title">{item.title}</h2>
-            <p className="item-info__price">{item.price} eur</p>
+            <Price salePrice={item.salePrice}>{item.price}</Price>
             <div className="item-info__options d-flex ">
               <div>
                 <label htmlFor="colors">Colors</label>
