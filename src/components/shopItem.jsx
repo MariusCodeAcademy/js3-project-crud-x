@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Price from './common/price';
+import Price from './common/price/price';
 
 class ShopItem extends Component {
   render() {
