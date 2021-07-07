@@ -53,6 +53,7 @@ class App extends Component {
           _id: 3,
           title: 'Feather Slim Fit Denim Jeans',
           price: 1299.95,
+          salePrice: 999.9,
           image: 'denim_01_',
           color: 'indigo',
           size: 'normal',

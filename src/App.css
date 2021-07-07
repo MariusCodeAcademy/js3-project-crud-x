@@ -52,6 +52,10 @@ h6 {
   width: 50%;
 }
 
+.pos-rel {
+  position: relative;
+}
+
 /* spacing classes */
 .mb-1 {
   margin-bottom: 0.5em;
@@ -106,6 +110,19 @@ textarea:focus-visible {
 }
 
 /* Shop page */
+.sale {
+  background-color: tomato;
+  color: snow;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  display: block;
+  line-height: 55px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-align: center;
+}
 
 /* Search cart  */
 .shop-search input {
