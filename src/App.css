@@ -166,10 +166,23 @@ textarea:focus-visible {
   margin-left: 3px;
 }
 
+/* Shop list */
+
+.shop-list {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 /* Shop item */
 .shop-item {
   text-align: center;
-  width: 33%;
+  width: 31%;
+}
+.shop-item img {
+  max-height: 200px;
+}
+.shop-items-part {
+  flex-grow: 1;
 }
 
 .shop-item .item-title {
