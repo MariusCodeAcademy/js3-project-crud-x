@@ -52,6 +52,14 @@ h6 {
   width: 50%;
 }
 
+/* spacing classes */
+.mb-1 {
+  margin-bottom: 0.5em;
+}
+.mb-2 {
+  margin-bottom: 1em;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -86,7 +94,6 @@ textarea:focus-visible {
 .header {
   background-color: var(--primary);
   color: var(--secondary);
-  margin-bottom: 2em;
 }
 
 .nav-link-item {
@@ -99,6 +106,18 @@ textarea:focus-visible {
 }
 
 /* Shop page */
+
+/* Search cart  */
+.shop-search input {
+  background-color: transparent;
+  border-color: transparent;
+  margin-left: 1em;
+  min-width: 200px;
+}
+
+.shop-search input:focus-visible {
+  border: 1px solid var(--primary);
+}
 
 /* --Categories */
 .categories-aside {
