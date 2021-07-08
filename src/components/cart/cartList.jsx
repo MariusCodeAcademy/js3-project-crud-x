@@ -8,7 +8,7 @@ const CartList = (props) => {
         <h3 className="cart-col">Quantity</h3>
         <h3 className="cart-col">Total</h3>
       </div>
-      {props.cartItems.map((item) => (
+      {props.cartItems.randomId458.map((item) => (
         <CartItem key={item._id} item={item} />
       ))}
     </div>
