@@ -12,7 +12,10 @@ class ShopSingleItem extends Component {
       mainImage: '',
       images: [],
       currentItemId: '',
-      currentItem: {},
+      currentItem: {
+        sizeQty: [],
+      },
+      selectedSize: { value: 'small' },
     };
   }
 
@@ -37,12 +40,24 @@ class ShopSingleItem extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('update');
+    // console.log('update');
   }
+
+  handleSize = (event) => {
+    this.setState({ selectedSize: { value: event.target.value } });
+  };
 
   handleMainImage = (img) => {
     this.setState({ mainImage: img });
   };
+
+  getQuantity() {
+    const { currentItem: item, selectedSize } = this.state;
+    if (item.sizeQty.length === 0) return;
+    const { quantity } = item.sizeQty.find((i) => i.size === selectedSize.value);
+    // console.log(quantity);
+    return quantity;
+  }
 
   render() {
     const { socialLinksData, items } = this.props;
@@ -81,11 +96,23 @@ class ShopSingleItem extends Component {
               <div>
                 <label htmlFor="sizes">Sizes</label>
                 <br />
-                <select name="sizes" id="sizes">
-                  <option value="1">Small</option>
-                  <option value="2">Medium</option>
-                  <option value="3">Large</option>
+                <select
+                  onChange={this.handleSize}
+                  value={this.state.selectedSize.value}
+                  name="sizes"
+                  id="sizes"
+                >
+                  {item.sizeQty &&
+                    item.sizeQty.map((i) => (
+                      <option key={i._id} value={i.size}>
+                        {i.size}
+                      </option>
+                    ))}
                 </select>
+              </div>
+              <div>
+                <h4>In stock</h4>
+                <p>{item.sizeQty && this.getQuantity()}</p>
               </div>
             </div>
             <Button outline>Add to cart</Button>
