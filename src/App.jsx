@@ -6,6 +6,7 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import 'font-awesome/css/font-awesome.css';
 import Footer from './components/footer';
+import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -35,11 +36,14 @@ class App extends Component {
           salePrice: 49.9,
           image: 'acc_hat_01_',
           color: 'green',
-          size: 'normal',
+          sizeQty: [
+            { size: 'small', quantity: 10 },
+            { size: 'medium', quantity: 7 },
+            { size: 'large', quantity: 15 },
+          ],
           images: [1, 2, 3, 4, 5],
           sku: 'hat_01',
-          quantity: 9,
-          category: 'accesories',
+          category: 'liink to ccat id',
         },
         {
           _id: 2,
@@ -85,6 +89,7 @@ class App extends Component {
           size: 'normal',
           sku: 'hat_01',
           quantity: 1,
+          // userId: 'links to user',
         },
         {
           _id: 2,
@@ -99,6 +104,20 @@ class App extends Component {
       ],
     },
   };
+
+  async componentDidMount() {
+    console.log('app mounted');
+    // axios
+    //   .get('http://localhost:4000/api/shop/categories')
+    //   .then((result) => console.log(result.data))
+    //   .catch((err) => console.log(err));
+    try {
+      const { data } = await axios.get('http://localhost:4000/api/shop/categories');
+      // console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   render() {
     const { navLinks, shop } = this.state;
     return (
