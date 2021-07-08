@@ -6,7 +6,7 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import 'font-awesome/css/font-awesome.css';
 import Footer from './components/footer';
-import { getCategories, getItems } from './utils/requests';
+import request from './utils/requests';
 
 class App extends Component {
   state = {
@@ -53,8 +53,8 @@ class App extends Component {
     console.log('app mounted');
 
     const shopCopy = { ...this.state.shop };
-    shopCopy.shopCategories = await getCategories();
-    shopCopy.items = await getItems();
+    shopCopy.shopCategories = await request.getCategories();
+    shopCopy.items = await request.getItems();
     this.setState({ shop: shopCopy });
   }
   render() {
