@@ -51,7 +51,7 @@ class App extends Component {
 
   async componentDidMount() {
     console.log('app mounted');
-
+    console.log('ar promisas ar data ', request.getCategories());
     const shopCopy = { ...this.state.shop };
     shopCopy.shopCategories = await request.getCategories();
     shopCopy.items = await request.getItems();

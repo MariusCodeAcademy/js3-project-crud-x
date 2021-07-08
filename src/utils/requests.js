@@ -20,6 +20,14 @@ const request = {
       console.log(err);
     }
   },
+  getSingleItem: async (singleItemId) => {
+    try {
+      const itemsResult = await axios.get(itemBaseUrl + '/' + singleItemId);
+      return itemsResult.data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 export default request;

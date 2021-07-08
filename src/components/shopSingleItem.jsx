@@ -3,6 +3,7 @@ import Button from './common/button/button';
 import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
 import Price from './common/price/price';
+import request from '../utils/requests';
 
 class ShopSingleItem extends Component {
   constructor() {
@@ -15,10 +16,9 @@ class ShopSingleItem extends Component {
     };
   }
 
-  componentDidMount() {
-    const currentItemId = +this.props.match.params.id;
-    const item = this.props.items.find((i) => i._id === currentItemId);
-
+  async componentDidMount() {
+    const currentItemId = this.props.match.params.id;
+    const item = await request.getSingleItem(currentItemId);
     const { images, image } = item;
     const imagesRequired = images.map(
       (imgNo) => require(`../static/shop/${image}${imgNo}.jpg`).default
@@ -32,6 +32,7 @@ class ShopSingleItem extends Component {
     this.setState({
       images: imagesRequired,
       mainImage: imagesRequired[2],
+      currentItem: item,
     });
   }
 
@@ -45,8 +46,7 @@ class ShopSingleItem extends Component {
 
   render() {
     const { socialLinksData, items } = this.props;
-    const currentItemId = +this.props.match.params.id;
-    const item = this.props.items.find((i) => i._id === currentItemId);
+    const { currentItem: item } = this.state;
     return (
       <div className="single-item ">
         <div className="d-flex">
