@@ -5,7 +5,25 @@ import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
 import SocialLinks from '../components/common/socialLinks';
 import Cart from '../components/cart/cart';
+import request from '../utils/requests';
+
 class Shop extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getUsers();
+  }
+
+  async getUsers() {
+    const users = await request.getUsers();
+    this.setState({ users: users });
+  }
+
   render() {
     const { socialLinksData, shopCategories, items, cart } = this.props.shop;
     return (
@@ -32,6 +50,17 @@ class Shop extends Component {
               </ul>
             </div>
             <SocialLinks socialLink={socialLinksData} />
+            <div className="hr"></div>
+            <div className="users">
+              <h3>Our Users</h3>
+              <ul>
+                {this.state.users.map(({ name, email }) => (
+                  <li>
+                    {name}, {email}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </aside>
           <main className="shop-items-part">
             <Route
