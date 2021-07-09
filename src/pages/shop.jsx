@@ -54,8 +54,8 @@ class Shop extends Component {
             <div className="users">
               <h3>Our Users</h3>
               <ul>
-                {this.state.users.map(({ name, email }) => (
-                  <li>
+                {this.state.users.map(({ _id, name, email }) => (
+                  <li key={_id}>
                     {name}, {email}
                   </li>
                 ))}
