@@ -8,13 +8,33 @@ class Admin extends Component {
       quantity: 1,
     },
   };
+
+  handleTextChange = ({ target }) => {
+    const formDataCopy = { ...this.state.formData };
+    formDataCopy[target.name] = target.value;
+    this.setState({ formData: formDataCopy });
+  };
+
   render() {
+    const { title, price } = this.state.formData;
     return (
       <div className="admin-page">
         <h1>I am a Admin</h1>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Item title" name="title" />
-          <input type="number" placeholder="Item title" name="price" />
+          <input
+            onChange={this.handleTextChange}
+            value={title}
+            type="text"
+            placeholder="Item title"
+            name="title"
+          />
+          <input
+            onChange={this.handleTextChange}
+            value={price}
+            type="number"
+            placeholder="Item price"
+            name="price"
+          />
           <button type="submit">Add item</button>
         </form>
       </div>
