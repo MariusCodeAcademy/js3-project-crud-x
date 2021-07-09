@@ -33,3 +33,13 @@
 // galimybe ivygdyti handleTotal is cartItem atsiuncian suma
 
 // cartItem atskiras metodas kuris grazina total suma
+
+// uzd
+
+// sukurti nauja admin page
+
+// admin page ikelti addItemForm componentas
+
+// addItemForm komponente yra forma kuria supildzius pasitikrinam backende ar gaunam
+
+// pakeiciam back end kad jis sukurtu nauja itema is req.body

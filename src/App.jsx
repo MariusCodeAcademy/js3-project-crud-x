@@ -7,12 +7,14 @@ import Shop from './pages/shop';
 import 'font-awesome/css/font-awesome.css';
 import Footer from './components/footer';
 import { getCategories, getItems } from './utils/requests';
+import Admin from './pages/admin';
 
 class App extends Component {
   state = {
     navLinks: [
       { to: '/', title: 'Home' },
       { to: '/shop', title: 'Shop' },
+      { to: '/admin', title: 'Admin' },
       { to: '/about', title: 'About' },
     ],
     shop: {
@@ -82,6 +84,7 @@ class App extends Component {
           <Switch>
             {/* kai reikia perduoti props i route  mes tai darom su sekancia sintaxe */}
             <Route path="/shop" render={(props) => <Shop shop={shop} {...props} />} />
+            <Route exact path="/admin" component={Admin} />
             <Route exact path="/" component={Home} />
           </Switch>
         </div>
