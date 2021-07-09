@@ -3,7 +3,7 @@ import Button from './common/button/button';
 import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
 import Price from './common/price/price';
-import { getSingleItem } from '../utils/requests';
+import { getSingleItem, addToCart } from '../utils/requests';
 
 class ShopSingleItem extends Component {
   constructor(props) {
@@ -67,6 +67,7 @@ class ShopSingleItem extends Component {
   handleAddToCart = () => {
     console.log('add to cart please');
     // siusti i back end itema irasymui i cart
+    addToCart();
   };
 
   render() {
