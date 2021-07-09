@@ -5,7 +5,7 @@ import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
 import SocialLinks from '../components/common/socialLinks';
 import Cart from '../components/cart/cart';
-import request from '../utils/requests';
+import { getUsers } from '../utils/requests';
 
 class Shop extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Shop extends Component {
   }
 
   async getUsers() {
-    const users = await request.getUsers();
+    const users = await getUsers();
     this.setState({ users: users });
   }
 

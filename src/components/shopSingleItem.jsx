@@ -3,7 +3,7 @@ import Button from './common/button/button';
 import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
 import Price from './common/price/price';
-import request from '../utils/requests';
+import { getSingleItem } from '../utils/requests';
 
 class ShopSingleItem extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class ShopSingleItem extends Component {
 
   async componentDidMount() {
     const currentItemId = this.props.match.params.id;
-    const item = await request.getSingleItem(currentItemId);
+    const item = await getSingleItem(currentItemId);
     const { images, image } = item;
     const imagesRequired = images.map(
       (imgNo) => require(`../static/shop/${image}${imgNo}.jpg`).default

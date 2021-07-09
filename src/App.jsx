@@ -6,7 +6,7 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import 'font-awesome/css/font-awesome.css';
 import Footer from './components/footer';
-import request from './utils/requests';
+import { getCategories, getItems } from './utils/requests';
 
 class App extends Component {
   state = {
@@ -69,8 +69,8 @@ class App extends Component {
     console.log('app mounted');
     // console.log('ar promisas ar data ', request.getCategories());
     const shopCopy = { ...this.state.shop };
-    shopCopy.shopCategories = await request.getCategories();
-    shopCopy.items = await request.getItems();
+    shopCopy.shopCategories = await getCategories();
+    shopCopy.items = await getItems();
     this.setState({ shop: shopCopy });
   }
   render() {
