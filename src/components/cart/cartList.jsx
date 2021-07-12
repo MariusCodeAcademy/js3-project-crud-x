@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getCartItems } from '../../utils/requests';
 import CartItem from './cartItem';
 
 class CartList extends Component {
@@ -8,8 +9,15 @@ class CartList extends Component {
       currentCart: [],
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
+    console.log('componentDidMount -- cartList');
     // get all cart items for current user
+    const cartItems = await getCartItems(this.getUserIdFromSession());
+    console.log(cartItems.data);
+  }
+  getUserIdFromSession() {
+    const id = sessionStorage.getItem('loggedInUserId');
+    return id ? id : console.error('no id in session');
   }
   render() {
     return (
