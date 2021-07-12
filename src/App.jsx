@@ -8,7 +8,7 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import 'font-awesome/css/font-awesome.css';
 import Footer from './components/footer';
-import { getCategories, getItems } from './utils/requests';
+import { getCategories, getItems, getCartCount } from './utils/requests';
 import Admin from './pages/admin';
 
 class App extends Component {
@@ -68,6 +68,7 @@ class App extends Component {
         // route prideti nauja useri
       ],
     },
+    cartCount: null,
   };
 
   async componentDidMount() {
@@ -81,6 +82,7 @@ class App extends Component {
   }
 
   logInUserIfInSession() {
+    this.handleCartCount();
     // pasitikrinti ar yra user sessijoj, ir nustatyti  jei yra
     const currentUserInSession = sessionStorage.getItem('loggedInUserId');
     const currentUserInSessionEmail = sessionStorage.getItem('loggedInUserEmail');
@@ -98,6 +100,14 @@ class App extends Component {
     toast.success(`You are now logged in as ${email}`);
     this.setState({ currentUser: { _id: userId, email: email } });
   };
+
+  async handleCartCount() {
+    // nustatyti state cartCount i tiek kiek turim karte item
+    const ats = await getCartCount(this.state.currentUser._id);
+    console.log(ats);
+    // this.setState({ :  });
+    //pass cartCount to shop
+  }
 
   render() {
     const { navLinks, shop, currentUser } = this.state;

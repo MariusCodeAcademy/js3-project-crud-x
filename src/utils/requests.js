@@ -50,6 +50,13 @@ export const addToCart = async (userId, cartObj) => {
 
 export const getCartItems = async (userId) => {
   console.log('trying to get all cart items');
-  const ats = axios.get(`${cartBaseUrl}/${userId}`);
+  const ats = await axios.get(`${cartBaseUrl}/${userId}`);
   return ats;
+};
+
+export const getCartCount = async (userId) => {
+  // send get rq to get cart count
+  console.log('send get rq to get cart count');
+  const ats = await axios.get(`${cartBaseUrl}/count/${userId}`);
+  return ats.data;
 };
