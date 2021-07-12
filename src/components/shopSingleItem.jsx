@@ -57,9 +57,11 @@ class ShopSingleItem extends Component {
   }
 
   handleSize = (event) => {
+    toast.info(`size set to ${event.target.value}`);
     this.setState({ selectedSize: event.target.value });
   };
   handleColor = (event) => {
+    toast.info(`color is now ${event.target.value}`);
     this.setState({ selectedColor: event.target.value });
   };
 

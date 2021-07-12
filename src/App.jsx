@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import './App.css';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HeaderX from './components/headerX';
 import Home from './pages/home';
@@ -95,6 +95,7 @@ class App extends Component {
     // autetifikuoti useri
     sessionStorage.setItem('loggedInUserId', userId);
     sessionStorage.setItem('loggedInUserEmail', email);
+    toast.success(`You are now logged in as ${email}`);
     this.setState({ currentUser: { _id: userId, email: email } });
   };
 
