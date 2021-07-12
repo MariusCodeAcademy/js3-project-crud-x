@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import SocialLinks from '../components/common/socialLinks';
 import Cart from '../components/cart/cart';
 import { getUsers } from '../utils/requests';
+import Button from '../components/common/button/button';
 
 class Shop extends Component {
   constructor(props) {
@@ -23,6 +24,13 @@ class Shop extends Component {
     const users = await getUsers();
     this.setState({ users: users });
   }
+
+  handleLogin = (userId, email) => {
+    // autetifikuoti useri
+    sessionStorage.setItem('loggedInUserId', userId);
+    sessionStorage.setItem('loggedInUserEmail', email);
+    this.setState({ loggedIn: true });
+  };
 
   render() {
     const { socialLinksData, shopCategories, items, cart } = this.props.shop;
@@ -56,7 +64,12 @@ class Shop extends Component {
               <ul>
                 {this.state.users.map(({ _id, name, email }) => (
                   <li key={_id}>
-                    {name}, {email}
+                    <p>
+                      {name}, {email}
+                    </p>
+                    <Button onClick={() => this.handleLogin(_id, email)} size="medium">
+                      Login
+                    </Button>
                   </li>
                 ))}
               </ul>
