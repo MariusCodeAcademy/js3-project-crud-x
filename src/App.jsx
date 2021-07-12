@@ -81,15 +81,15 @@ class App extends Component {
     this.setState({ shop: shopCopy });
   }
 
-  logInUserIfInSession() {
-    this.handleCartCount();
+  async logInUserIfInSession() {
     // pasitikrinti ar yra user sessijoj, ir nustatyti  jei yra
     const currentUserInSession = sessionStorage.getItem('loggedInUserId');
     const currentUserInSessionEmail = sessionStorage.getItem('loggedInUserEmail');
     if (currentUserInSession) {
-      this.setState({
+      await this.setState({
         currentUser: { _id: currentUserInSession, email: currentUserInSessionEmail },
       });
+      this.handleCartCount();
     }
   }
 
@@ -105,12 +105,12 @@ class App extends Component {
     // nustatyti state cartCount i tiek kiek turim karte item
     const ats = await getCartCount(this.state.currentUser._id);
     console.log(ats);
-    // this.setState({ :  });
+    this.setState({ cartCount: ats });
     //pass cartCount to shop
   }
 
   render() {
-    const { navLinks, shop, currentUser } = this.state;
+    const { navLinks, shop, currentUser, cartCount } = this.state;
     return (
       <div className="App">
         <ToastContainer />
@@ -120,7 +120,9 @@ class App extends Component {
             {/* kai reikia perduoti props i route  mes tai darom su sekancia sintaxe */}
             <Route
               path="/shop"
-              render={(props) => <Shop onLogin={this.handleLogin} shop={shop} {...props} />}
+              render={(props) => (
+                <Shop cartCount={cartCount} onLogin={this.handleLogin} shop={shop} {...props} />
+              )}
             />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/" component={Home} />

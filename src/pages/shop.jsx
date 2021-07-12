@@ -36,7 +36,8 @@ class Shop extends Component {
             <input type="search" placeholder="Search" />
           </div>
           <Link to="/shop/cart" className="shop-cart">
-            <i className="fa fa-shopping-cart"></i> Cart(2)
+            <i className="fa fa-shopping-cart"></i> Cart (
+            {this.props.cartCount && this.props.cartCount})
           </Link>
         </div>
         <div className="hr"></div>
