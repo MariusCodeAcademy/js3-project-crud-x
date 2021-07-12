@@ -25,13 +25,6 @@ class Shop extends Component {
     this.setState({ users: users });
   }
 
-  handleLogin = (userId, email) => {
-    // autetifikuoti useri
-    sessionStorage.setItem('loggedInUserId', userId);
-    sessionStorage.setItem('loggedInUserEmail', email);
-    this.setState({ loggedIn: true });
-  };
-
   render() {
     const { socialLinksData, shopCategories, items, cart } = this.props.shop;
     return (
@@ -67,7 +60,7 @@ class Shop extends Component {
                     <p>
                       {name}, {email}
                     </p>
-                    <Button onClick={() => this.handleLogin(_id, email)} size="medium">
+                    <Button onClick={() => this.props.onLogin(_id, email)} size="medium">
                       Login
                     </Button>
                   </li>

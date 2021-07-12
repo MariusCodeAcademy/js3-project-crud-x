@@ -8,18 +8,6 @@ class HeaderX extends Component {
     };
   }
 
-  componentDidMount() {
-    const isLoggedIn = sessionStorage.getItem('loggedInUserId');
-    if (isLoggedIn) {
-      this.setState({ loggedInUser: isLoggedIn });
-    }
-    // atvaizduoti prisijungusio vartotojo email
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('header x update');
-  }
-
   render() {
     return (
       <header className="header mb-1">
@@ -34,8 +22,8 @@ class HeaderX extends Component {
               </Link>
             ))}
           </nav>
-          {this.state.loggedInUser && (
-            <div className="logged-in">Logged in: {this.state.loggedInUser}</div>
+          {this.props.currentUser._id && (
+            <div className="logged-in">Logged in: {this.props.currentUser.email}</div>
           )}
         </div>
       </header>

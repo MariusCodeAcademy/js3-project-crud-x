@@ -11,6 +11,7 @@ import Admin from './pages/admin';
 
 class App extends Component {
   state = {
+    currentUser: {},
     navLinks: [
       { to: '/', title: 'Home' },
       { to: '/shop', title: 'Shop' },
@@ -75,15 +76,26 @@ class App extends Component {
     shopCopy.items = await getItems();
     this.setState({ shop: shopCopy });
   }
+
+  handleLogin = (userId, email) => {
+    // autetifikuoti useri
+    sessionStorage.setItem('loggedInUserId', userId);
+    sessionStorage.setItem('loggedInUserEmail', email);
+    this.setState({ currentUser: { _id: userId, email: email } });
+  };
+
   render() {
-    const { navLinks, shop } = this.state;
+    const { navLinks, shop, currentUser } = this.state;
     return (
       <div className="App">
-        <HeaderX navLinks={navLinks} />
+        <HeaderX currentUser={currentUser} navLinks={navLinks} />
         <div className="container">
           <Switch>
             {/* kai reikia perduoti props i route  mes tai darom su sekancia sintaxe */}
-            <Route path="/shop" render={(props) => <Shop shop={shop} {...props} />} />
+            <Route
+              path="/shop"
+              render={(props) => <Shop onLogin={this.handleLogin} shop={shop} {...props} />}
+            />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/" component={Home} />
           </Switch>
