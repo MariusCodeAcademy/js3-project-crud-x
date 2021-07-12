@@ -14,6 +14,7 @@ class CartList extends Component {
     // get all cart items for current user
     const cartItems = await getCartItems(this.getUserIdFromSession());
     console.log(cartItems.data);
+    this.setState({ currentCart: cartItems.data });
   }
   getUserIdFromSession() {
     const id = sessionStorage.getItem('loggedInUserId');
@@ -28,9 +29,9 @@ class CartList extends Component {
           <h3 className="cart-col">Quantity</h3>
           <h3 className="cart-col">Total</h3>
         </div>
-        {this.props.cartItems.randomId458.map((item) => (
+        {/* {this.state.currentCart.map((item) => (
           <CartItem key={item._id} item={item} />
-        ))}
+        ))} */}
       </div>
     );
   }
