@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import HeaderX from './components/headerX';
 import Home from './pages/home';
 import Shop from './pages/shop';
@@ -100,6 +102,7 @@ class App extends Component {
     const { navLinks, shop, currentUser } = this.state;
     return (
       <div className="App">
+        <ToastContainer />
         <HeaderX currentUser={currentUser} navLinks={navLinks} />
         <div className="container">
           <Switch>

@@ -4,6 +4,7 @@ import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
 import Price from './common/price/price';
 import { getSingleItem, addToCart } from '../utils/requests';
+import { toast } from 'react-toastify';
 
 class ShopSingleItem extends Component {
   constructor(props) {
@@ -86,6 +87,7 @@ class ShopSingleItem extends Component {
       sku: currentItem.sku,
       price: currentItem.salePrice || currentItem.price,
     });
+    toast.success('Item added to cart');
   };
 
   render() {
