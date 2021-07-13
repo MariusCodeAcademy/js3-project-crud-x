@@ -359,11 +359,11 @@ textarea:focus-visible {
     display: block;
   }
   .main-nav {
-    display: none;
-  }
-  .main-nav.open {
+    max-height: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: max-height 0.2s;
   }
 
   .you-may-like__container {
