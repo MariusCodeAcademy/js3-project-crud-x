@@ -105,6 +105,20 @@ textarea:focus-visible {
   color: var(--secondary);
 }
 
+.header .mobile-burger {
+  color: snow;
+  background-color: transparent;
+  border: none;
+  height: 2.5em;
+  width: 2.5em;
+  display: none;
+  padding: 2px;
+  cursor: pointer;
+}
+.mobile-burger .mobile-burger__icon {
+  font-size: 1.7em;
+}
+
 .nav-link-item {
   padding: 0.4em 1em;
   display: inline-block;
@@ -341,6 +355,13 @@ textarea:focus-visible {
 }
 
 @media screen and (max-width: 800px) {
+  .header .mobile-burger {
+    display: block;
+  }
+  .main-nav {
+    display: none;
+  }
+
   .you-may-like__container {
     overflow: hidden;
   }

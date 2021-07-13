@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from './common/button/button';
 class HeaderX extends Component {
   render() {
     return (
@@ -15,6 +16,9 @@ class HeaderX extends Component {
               </Link>
             ))}
           </nav>
+          <button className="mobile-burger">
+            <i className="mobile-burger__icon  fa fa-bars"></i>
+          </button>
           {this.props.currentUser._id && (
             <div className="logged-in">Logged in: {this.props.currentUser.email}</div>
           )}
