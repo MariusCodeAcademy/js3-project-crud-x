@@ -82,6 +82,8 @@ class ShopSingleItem extends Component {
     console.log('add to cart please');
     // siusti i back end itema irasymui i cart
     addToCart(currentUserId, {
+      title: currentItem.title,
+      image: currentItem.image,
       itemId: currentItem._id,
       color: selectedColor,
       size: selectedSize,
