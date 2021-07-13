@@ -361,6 +361,10 @@ textarea:focus-visible {
   .main-nav {
     display: none;
   }
+  .main-nav.open {
+    display: flex;
+    flex-direction: column;
+  }
 
   .you-may-like__container {
     overflow: hidden;
