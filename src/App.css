@@ -330,6 +330,10 @@ textarea:focus-visible {
 }
 
 @media screen and (max-width: 800px) {
+  .single__image-desc {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
   .d-upto-800 {
     display: block;
   }
