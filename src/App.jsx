@@ -12,64 +12,71 @@ import { getCategories, getItems, getCartCount } from './utils/requests';
 import Admin from './pages/admin';
 
 class App extends Component {
-  state = {
-    currentUser: {},
-    navLinks: [
-      { to: '/', title: 'Home' },
-      { to: '/shop', title: 'Shop' },
-      { to: '/admin', title: 'Admin' },
-      { to: '/about', title: 'About' },
-    ],
-    shop: {
-      shopCategories: [],
-      items: [],
-      socialLinksData: [
-        { to: 'https://www.facebook.com', icon: 'fa fa-facebook', title: 'share' },
-        { to: 'https://www.twitter.com', icon: 'fa fa-twitter', title: 'tweet' },
-        { to: 'https://www.instagram.com', icon: 'fa fa-instagram', title: 'pin it' },
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: {},
+      navLinks: [
+        { to: '/', title: 'Home' },
+        { to: '/shop', title: 'Shop' },
+        { to: '/admin', title: 'Admin' },
+        { to: '/about', title: 'About' },
       ],
-      cart: {
-        randomId458: [
+      shop: {
+        shopCategories: [],
+        items: [],
+        socialLinksData: [
+          { to: 'https://www.facebook.com', icon: 'fa fa-facebook', title: 'share' },
+          { to: 'https://www.twitter.com', icon: 'fa fa-twitter', title: 'tweet' },
+          { to: 'https://www.instagram.com', icon: 'fa fa-instagram', title: 'pin it' },
+        ],
+        cart: {
+          randomId458: [
+            {
+              _id: 1,
+              title: 'Green hat',
+              price: 99.99,
+              image: 'acc_hat_01_',
+              color: 'green',
+              size: 'normal',
+              sku: 'hat_01',
+              quantity: 1,
+              // userId: 'links to user',
+            },
+            {
+              _id: 2,
+              title: 'Feather Slim Fit Denim Jeans',
+              price: 1299.95,
+              image: 'denim_01_',
+              color: 'indigo',
+              size: 'normal',
+              sku: '01',
+              quantity: 2,
+            },
+          ],
+        },
+        users: [
           {
-            _id: 1,
-            title: 'Green hat',
-            price: 99.99,
-            image: 'acc_hat_01_',
-            color: 'green',
-            size: 'normal',
-            sku: 'hat_01',
-            quantity: 1,
-            // userId: 'links to user',
+            name: 'Bob Stone',
+            email: 'stone@bob.com',
+            password: 'pass',
           },
-          {
-            _id: 2,
-            title: 'Feather Slim Fit Denim Jeans',
-            price: 1299.95,
-            image: 'denim_01_',
-            color: 'indigo',
-            size: 'normal',
-            sku: '01',
-            quantity: 2,
-          },
+          // sukurti modeli User
+
+          // sukurti route gauti visiems useriams
+
+          // route gauti konkreciam user pagal id
+
+          // route prideti nauja useri
         ],
       },
-      users: [
-        {
-          name: 'Bob Stone',
-          email: 'stone@bob.com',
-          password: 'pass',
-        },
-        // sukurti modeli User
+      cartCount: null,
+    };
+  }
 
-        // sukurti route gauti visiems useriams
-
-        // route gauti konkreciam user pagal id
-
-        // route prideti nauja useri
-      ],
-    },
-    cartCount: null,
-  };
+  componentDidUpdate(prevProps, prevState) {
+    console.log('app updated');
+  }
 
   async componentDidMount() {
     console.log('app mounted');
@@ -93,19 +100,22 @@ class App extends Component {
     }
   }
 
-  handleLogin = (userId, email) => {
+  handleLogin = async (userId, email) => {
     // autetifikuoti useri
     sessionStorage.setItem('loggedInUserId', userId);
     sessionStorage.setItem('loggedInUserEmail', email);
     toast.success(`You are now logged in as ${email}`);
-    this.setState({ currentUser: { _id: userId, email: email } });
+    await this.setState({ currentUser: { _id: userId, email: email } });
+    this.handleCartCount();
   };
 
-  async handleCartCount() {
+  async handleCartCount(id = this.state.currentUser._id) {
     // nustatyti state cartCount i tiek kiek turim karte item
-    const ats = await getCartCount(this.state.currentUser._id);
+    console.log('this.state.currentUser._id', id);
+    // debugger;
+    const ats = await getCartCount(id);
     // console.log(ats);
-    this.setState({ cartCount: ats });
+    this.state && this.setState({ cartCount: ats });
     //pass cartCount to shop
   }
 
@@ -121,7 +131,13 @@ class App extends Component {
             <Route
               path="/shop"
               render={(props) => (
-                <Shop cartCount={cartCount} onLogin={this.handleLogin} shop={shop} {...props} />
+                <Shop
+                  cartCount={cartCount}
+                  onCartCount={this.handleCartCount}
+                  onLogin={this.handleLogin}
+                  shop={shop}
+                  {...props}
+                />
               )}
             />
             <Route exact path="/admin" component={Admin} />

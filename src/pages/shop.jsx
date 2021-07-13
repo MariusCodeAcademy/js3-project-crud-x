@@ -75,7 +75,7 @@ class Shop extends Component {
               path="/shop/item/:id"
               render={(props) => (
                 <ShopSingleItem
-                  // item={items.find((i) => i._id === props.match.params.id)}
+                  onCartCount={this.props.onCartCount}
                   socialLinksData={socialLinksData}
                   items={items}
                   {...props}

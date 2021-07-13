@@ -91,6 +91,7 @@ class ShopSingleItem extends Component {
       sku: currentItem.sku,
       price: currentItem.salePrice || currentItem.price,
     });
+    this.props.onCartCount(currentUserId);
     toast.success('Item added to cart');
   };
 
