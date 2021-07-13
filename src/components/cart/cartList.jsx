@@ -10,10 +10,10 @@ class CartList extends Component {
     };
   }
   async componentDidMount() {
-    console.log('componentDidMount -- cartList');
+    // console.log('componentDidMount -- cartList');
     // get all cart items for current user
     const cartItems = await getCartItems(this.getUserIdFromSession());
-    console.log(cartItems.data);
+    // console.log(cartItems.data);
     this.setState({ currentCart: cartItems.data });
   }
   getUserIdFromSession() {
