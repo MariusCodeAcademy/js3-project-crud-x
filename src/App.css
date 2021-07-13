@@ -321,6 +321,9 @@ textarea:focus-visible {
   .shop-item {
     width: 100%;
   }
+  .aside-main-container {
+    flex-direction: column-reverse;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -330,6 +333,16 @@ textarea:focus-visible {
 }
 
 @media screen and (max-width: 800px) {
+  .you-may-like__container {
+    overflow: hidden;
+  }
+  .you-may-like .shop-item {
+    flex-shrink: 0;
+  }
+  .you-may-like .shop-item img {
+    height: initial;
+  }
+
   .single__image-desc {
     flex-direction: column-reverse;
     align-items: center;

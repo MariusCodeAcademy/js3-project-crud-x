@@ -41,7 +41,7 @@ class Shop extends Component {
           </Link>
         </div>
         <div className="hr"></div>
-        <div className="d-flex">
+        <div className="d-flex aside-main-container">
           <aside className="categories-aside">
             <div className="categories">
               <ul>
