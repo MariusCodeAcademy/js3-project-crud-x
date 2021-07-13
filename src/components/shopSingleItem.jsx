@@ -96,7 +96,7 @@ class ShopSingleItem extends Component {
       toast.error('error adding item');
     } else {
       toast.success('Item added to cart');
-      // this.props.onCartCount(currentUserId);
+      this.props.onCartCount(currentUserId);
     }
     console.log('ats', ats);
   };
