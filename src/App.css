@@ -39,13 +39,18 @@ h6 {
   --primary: #333;
   --secondary: snow;
 }
-/* common */
+/* common ============ */
 .d-flex {
   display: flex;
   gap: 1em;
 }
 .space-between {
   justify-content: space-between;
+}
+
+.unstyled-list {
+  list-style: none;
+  padding-left: 0;
 }
 
 .w-50 {
@@ -318,6 +323,9 @@ textarea:focus-visible {
 /* Responsive */
 
 @media screen and (max-width: 500px) {
+  .flex-column-upto-500 {
+    flex-direction: column;
+  }
   .shop-item {
     width: 100%;
   }
