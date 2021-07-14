@@ -33,8 +33,11 @@ class Cart extends Component {
   updateQuantity = (itemId, newQty) => {
     console.log('updateQuantity');
     console.log(itemId, newQty);
+
     // iskviesti is cartItem el
-    // sendUpdateQtya('jshdjsdhjsh', 5);
+    // sendUpdateQty('this.getUserIdFromSession()', 'itemId', 5);
+    // aprasyti ja  requests.js kur iskonsolinam visas reiksmes
+
     // kreiptis per request.js funcija i backenda kuris turetu atnaujinti
     // kieki pagal paduotus parametrus
   };
@@ -48,13 +51,13 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <div className="cartList">
-          <CartList cartItems={this.state.currentCart} />
+        <div className="cartList mb-2 ">
+          <CartList onQuantity={this.updateQuantity} cartItems={this.state.currentCart} />
         </div>
         <div className="d-flex">
           <div className="cart__instructions">
-            <label htmlFor="instructions">Special instructions for seller</label>
-            <br />
+            <label htmlFor="instructions mb-1">Special instructions for seller</label>
+            <br /> <br />
             <textarea name="" id="instructions" cols="30" rows="10"></textarea>
           </div>
           <div className="cart-info">

@@ -20,7 +20,7 @@ class CartList extends Component {
           <h3 className="cart-col">Total</h3>
         </div>
         {this.props.cartItems.map((item) => (
-          <CartItem key={item._id} item={item} />
+          <CartItem onQuantity={this.props.onQuantity} key={item._id} item={item} />
         ))}
       </div>
     );
