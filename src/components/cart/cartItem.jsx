@@ -15,6 +15,7 @@ class CartItem extends Component {
 
   handleQty = ({ target }) => {
     target.value >= 0 && this.setState({ qty: target.value });
+    // cia iskviesti updateQuantity ir paduoti id ir nauja value
   };
 
   componentDidUpdate(prevProps, prevState) {

@@ -10,8 +10,6 @@ class CartList extends Component {
     };
   }
 
-  // suskaiciuoti cart total cart komponente
-
   render() {
     return (
       <div>

@@ -16,16 +16,33 @@ class Cart extends Component {
     // console.log('componentDidMount -- cartList');
     // get all cart items for current user
     const cartItems = await getCartItems(this.getUserIdFromSession());
-    console.log('cartItems.data', cartItems.data);
+
     // patikrinti ar cartItems.data yra tuscuas objektas
     // jei taip tai norim nenaujinti state
-    if (Object.keys(cartItems.data).length !== 0) {
-      this.setState({ currentCart: cartItems.data });
+    if (Object.keys(cartItems).length !== 0) {
+      console.log('cartItems.data', cartItems);
+      console.log('total', this.calculateTotal(cartItems));
+      this.setState({ currentCart: cartItems, cartTotal: this.calculateTotal(cartItems) });
     }
   }
   getUserIdFromSession() {
     const id = sessionStorage.getItem('loggedInUserId');
     return id ? id : console.error('no id in session');
+  }
+
+  updateQuantity = (itemId, newQty) => {
+    console.log('updateQuantity');
+    console.log(itemId, newQty);
+    // iskviesti is cartItem el
+    // sendUpdateQtya('jshdjsdhjsh', 5);
+    // kreiptis per request.js funcija i backenda kuris turetu atnaujinti
+    // kieki pagal paduotus parametrus
+  };
+
+  // suskaiciuoti cart total cart komponente
+  calculateTotal(items) {
+    // debugger;
+    return items.reduce((acc, curr) => acc + curr.quantity * (curr.salePrice || curr.price), 0);
   }
 
   render() {
