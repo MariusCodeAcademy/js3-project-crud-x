@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/button/button';
 import CartList from './cartList';
-import { getCartItems } from '../../utils/requests';
+import { getCartItems, sendUpdateQty } from '../../utils/requests';
 
 class Cart extends Component {
   constructor(props) {
@@ -31,15 +31,11 @@ class Cart extends Component {
   }
 
   updateQuantity = (itemId, newQty) => {
-    console.log('updateQuantity');
-    console.log(itemId, newQty);
-
     // iskviesti is cartItem el
-    // sendUpdateQty('this.getUserIdFromSession()', 'itemId', 5);
     // aprasyti ja  requests.js kur iskonsolinam visas reiksmes
-
     // kreiptis per request.js funcija i backenda kuris turetu atnaujinti
     // kieki pagal paduotus parametrus
+    sendUpdateQty(this.getUserIdFromSession(), itemId, newQty);
   };
 
   // suskaiciuoti cart total cart komponente
