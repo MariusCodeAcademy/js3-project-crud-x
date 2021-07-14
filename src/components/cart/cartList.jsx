@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCartItems } from '../../utils/requests';
+
 import CartItem from './cartItem';
 
 class CartList extends Component {
@@ -10,31 +10,8 @@ class CartList extends Component {
     };
   }
 
-  // perkelti currrentCart state i cart componenta
-
-  // perkelti susijusias funckijas isisitkinti kad current cartas veikia cart componente
-
-  // perduoti current cart i cartList kaip props
-
-  // atvaizduoti cart items is gauto props
-
   // suskaiciuoti cart total cart komponente
 
-  async componentDidMount() {
-    // console.log('componentDidMount -- cartList');
-    // get all cart items for current user
-    const cartItems = await getCartItems(this.getUserIdFromSession());
-    console.log('cartItems.data', cartItems.data);
-    // patikrinti ar cartItems.data yra tuscuas objektas
-    // jei taip tai norim nenaujinti state
-    if (Object.keys(cartItems.data).length !== 0) {
-      this.setState({ currentCart: cartItems.data });
-    }
-  }
-  getUserIdFromSession() {
-    const id = sessionStorage.getItem('loggedInUserId');
-    return id ? id : console.error('no id in session');
-  }
   render() {
     return (
       <div>
@@ -44,7 +21,7 @@ class CartList extends Component {
           <h3 className="cart-col">Quantity</h3>
           <h3 className="cart-col">Total</h3>
         </div>
-        {this.state.currentCart.map((item) => (
+        {this.props.cartItems.map((item) => (
           <CartItem key={item._id} item={item} />
         ))}
       </div>
