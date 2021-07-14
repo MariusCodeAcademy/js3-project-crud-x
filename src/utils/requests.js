@@ -62,7 +62,7 @@ export const getCartCount = async (userId) => {
   return ats.data;
 };
 
-export const sendUpdateQty = async(userId, cartItemId, newQty)  {
+export const sendUpdateQty = async (userId, cartItemId, newQty) => {
   console.log('sendUpdateQty');
   console.log(userId, cartItemId, newQty);
-}
+};
