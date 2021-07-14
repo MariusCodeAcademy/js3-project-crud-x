@@ -30,9 +30,10 @@ class ShopSingleItem extends Component {
     const currentItemId = this.props.match.params.id;
     const item = await getSingleItem(currentItemId);
     const { images, image } = item;
-    const imagesRequired = images.map(
-      (imgNo) => require(`../static/shop/${image}${imgNo}.jpg`).default
-    );
+    const imagesRequired = images.map((imgNo) => {
+      // console.log(`../static/shop/${image}${imgNo}.jpg`);
+      return require(`../static/shop/${image}${imgNo}.jpg`).default;
+    });
 
     // const images = require(`../static/shop/${image}3.jpg`).default
     // nustatyti default image

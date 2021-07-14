@@ -42,7 +42,7 @@ export const getUsers = async () => {
 export const addToCart = async (userId, shopItemObj) => {
   try {
     const ats = await axios.post(`${cartBaseUrl}/${userId}`, shopItemObj);
-    // console.log(ats.data);
+    console.log(ats.data);
     return ats.data;
   } catch (err) {
     throw new Error(err);
