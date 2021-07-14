@@ -68,19 +68,10 @@ class ShopSingleItem extends Component {
   };
 
   handleAddToCart = async () => {
-    const { currentUserId, currentItem, selectedColor, selectedSize } = this.state;
+    const { currentUserId, currentItem } = this.state;
     console.log('add to cart please');
     // siusti i back end itema irasymui i cart
-    const ats = await addToCart(currentUserId, {
-      title: currentItem.title,
-      image: currentItem.image,
-      itemId: currentItem._id,
-      color: selectedColor,
-      size: selectedSize,
-      quantity: 1,
-      sku: currentItem.sku,
-      price: currentItem.salePrice || currentItem.price,
-    });
+    const ats = await addToCart(currentUserId, currentItem);
     // pasitikriname ar gavom atsakyma
     if (!ats) {
       toast.error('error adding item');
@@ -88,7 +79,6 @@ class ShopSingleItem extends Component {
       toast.success('Item added to cart');
       this.props.onCartCount();
     }
-    console.log('ats', ats);
   };
 
   render() {

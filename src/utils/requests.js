@@ -39,13 +39,13 @@ export const getUsers = async () => {
 };
 
 // add to cart
-export const addToCart = async (userId, cartObj) => {
+export const addToCart = async (userId, shopItemObj) => {
   try {
-    const ats = await axios.post(`${cartBaseUrl}/${userId}`, cartObj);
+    const ats = await axios.post(`${cartBaseUrl}/${userId}`, shopItemObj);
     // console.log(ats.data);
     return ats.data;
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 };
 
