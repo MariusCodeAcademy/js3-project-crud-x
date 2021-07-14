@@ -9,6 +9,17 @@ class CartList extends Component {
       currentCart: [],
     };
   }
+
+  // perkelti currrentCart state i cart componenta
+
+  // perkelti susijusias funckijas isisitkinti kad current cartas veikia cart componente
+
+  // perduoti current cart i cartList kaip props
+
+  // atvaizduoti cart items is gauto props
+
+  // suskaiciuoti cart total cart komponente
+
   async componentDidMount() {
     // console.log('componentDidMount -- cartList');
     // get all cart items for current user
