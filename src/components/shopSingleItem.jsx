@@ -13,9 +13,7 @@ class ShopSingleItem extends Component {
       mainImage: '',
       images: [],
       currentItemId: '',
-      currentItem: {
-        sizeQty: [],
-      },
+      currentItem: {},
       selectedSize: 'small',
       selectedColor: 'green',
       currentUserId: '',
@@ -68,14 +66,6 @@ class ShopSingleItem extends Component {
   handleMainImage = (img) => {
     this.setState({ mainImage: img });
   };
-
-  getQuantity() {
-    const { currentItem: item, selectedSize } = this.state;
-    if (item.sizeQty.length === 0) return;
-    const { quantity } = item.sizeQty.find((i) => i.size === selectedSize);
-    // console.log(quantity);
-    return quantity;
-  }
 
   handleAddToCart = async () => {
     const { currentUserId, currentItem, selectedColor, selectedSize } = this.state;
@@ -149,17 +139,14 @@ class ShopSingleItem extends Component {
                   name="sizes"
                   id="sizes"
                 >
-                  {item.sizeQty &&
-                    item.sizeQty.map((i) => (
-                      <option key={i._id} value={i.size}>
-                        {i.size}
-                      </option>
-                    ))}
+                  <option value="small">Small</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Large">Large</option>
                 </select>
               </div>
               <div>
                 <h4>In stock</h4>
-                <p>{item.sizeQty && this.getQuantity()}</p>
+                <p>{item.quantity}</p>
               </div>
             </div>
             <Button onClick={this.handleAddToCart} outline>
