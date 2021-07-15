@@ -46,6 +46,11 @@ class ShopSingleItem extends Component {
       currentItem: item,
     });
   }
+  updateItemQuantityAfterAddToCart() {
+    // gauti single item is back end (getSingleItem)
+    // atnaujinti state su nauju item
+    // iskviesti sia funkcija kai sekmingai idejom item i cart
+  }
 
   componentDidUpdate(prevProps, prevState) {
     const { currentUserId } = this.state;
