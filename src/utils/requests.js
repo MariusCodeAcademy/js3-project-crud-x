@@ -65,4 +65,12 @@ export const getCartCount = async (userId) => {
 export const sendUpdateQty = async (userId, cartItemId, newQty) => {
   console.log('sendUpdateQty');
   console.log(userId, cartItemId, newQty);
+
+  // siusti rq PUT /api/shop/cart/:userId
+  try {
+    const ats = await axios.put(`${cartBaseUrl}/${userId}`, { cartItemId, newQty });
+    console.log('ats', ats.data);
+  } catch (err) {
+    console.log('klaida sendUpdateQty funkcijoj', err.message);
+  }
 };
