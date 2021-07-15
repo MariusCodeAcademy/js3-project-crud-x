@@ -12,30 +12,37 @@ class Cart extends Component {
     };
   }
 
-  async componentDidMount() {
-    // console.log('componentDidMount -- cartList');
+  async getCurrentCartItems() {
     // get all cart items for current user
     const cartItems = await getCartItems(this.getUserIdFromSession());
-
     // patikrinti ar cartItems.data yra tuscuas objektas
     // jei taip tai norim nenaujinti state
     if (Object.keys(cartItems).length !== 0) {
-      console.log('cartItems.data', cartItems);
-      console.log('total', this.calculateTotal(cartItems));
+      // console.log('cartItems.data', cartItems);
+      // console.log('total', this.calculateTotal(cartItems));
       this.setState({ currentCart: cartItems, cartTotal: this.calculateTotal(cartItems) });
     }
+  }
+
+  async componentDidMount() {
+    this.getCurrentCartItems();
   }
   getUserIdFromSession() {
     const id = sessionStorage.getItem('loggedInUserId');
     return id ? id : console.error('no id in session');
   }
 
-  updateQuantity = (itemId, newQty) => {
+  updateQuantity = async (itemId, newQty) => {
     // iskviesti is cartItem el
     // aprasyti ja  requests.js kur iskonsolinam visas reiksmes
     // kreiptis per request.js funcija i backenda kuris turetu atnaujinti
     // kieki pagal paduotus parametrus
-    sendUpdateQty(this.getUserIdFromSession(), itemId, newQty);
+    const updateOk = await sendUpdateQty(this.getUserIdFromSession(), itemId, newQty);
+    if (updateOk === true) {
+      // atnaujinti itemus
+      console.log('ruosiames antnaujinti itemus, nes panasu kad pasikeite kiekis');
+      this.getCurrentCartItems();
+    }
   };
 
   // suskaiciuoti cart total cart komponente

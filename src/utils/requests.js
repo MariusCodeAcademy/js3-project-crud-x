@@ -70,6 +70,7 @@ export const sendUpdateQty = async (userId, cartItemId, newQty) => {
   try {
     const ats = await axios.put(`${cartBaseUrl}/${userId}`, { cartItemId, newQty });
     console.log('ats', ats.data);
+    return true;
   } catch (err) {
     console.log('klaida sendUpdateQty funkcijoj', err.message);
   }
