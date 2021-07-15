@@ -33,3 +33,10 @@
 .button.outline:hover {
   color: rgb(203, 203, 203);
 }
+
+button:disabled {
+  opacity: 0.4;
+}
+button:disabled:hover {
+  color: snow;
+}
