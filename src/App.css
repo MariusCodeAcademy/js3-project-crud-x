@@ -40,6 +40,10 @@ h6 {
   --secondary: snow;
 }
 /* common ============ */
+.opacity-8 {
+  opacity: 0.8;
+}
+
 .d-flex {
   display: flex;
   gap: 1em;
