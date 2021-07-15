@@ -46,9 +46,11 @@ class ShopSingleItem extends Component {
       currentItem: item,
     });
   }
-  updateItemQuantityAfterAddToCart() {
+  async updateItemQuantityAfterAddToCart() {
     // gauti single item is back end (getSingleItem)
+    const item = await getSingleItem(this.props.match.params.id);
     // atnaujinti state su nauju item
+    this.setState({ currentItem: item });
     // iskviesti sia funkcija kai sekmingai idejom item i cart
   }
 
@@ -84,6 +86,8 @@ class ShopSingleItem extends Component {
     } else {
       toast.success('Item added to cart');
       this.props.onCartCount();
+      // atnaujinti item su updated quantity
+      this.updateItemQuantityAfterAddToCart();
     }
   };
 
