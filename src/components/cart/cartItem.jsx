@@ -82,7 +82,7 @@ class CartItem extends Component {
     })();
   }
   render() {
-    const { price, title, color, size } = this.props.item;
+    const { price, title, color, size, itemId } = this.props.item;
     return (
       <div className="cart-item d-flex">
         <div className="item-preview d-flex cart-col first">
@@ -96,7 +96,9 @@ class CartItem extends Component {
             <p>
               {color} / {size}
             </p>
-            <Button link>remove</Button>
+            <Button onClick={() => this.props.onDelete(itemId)} link>
+              remove
+            </Button>
           </div>
         </div>
         <div className="cart-col">

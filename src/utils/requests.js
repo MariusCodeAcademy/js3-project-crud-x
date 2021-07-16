@@ -75,3 +75,11 @@ export const sendUpdateQty = async (userId, cartItemId, newQty) => {
     console.log('klaida sendUpdateQty funkcijoj', err.message);
   }
 };
+
+export const deleteItem = async (userId, itemId) => {
+  console.log({ userId, itemId });
+  try {
+    const deleteResult = await axios.put(`${cartBaseUrl}/delete/${userId}`, { itemId });
+    return deleteResult.data;
+  } catch (err) {}
+};
