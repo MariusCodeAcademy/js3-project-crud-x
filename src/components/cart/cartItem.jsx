@@ -29,6 +29,7 @@ class CartItem extends Component {
    * Do not alow to add to stock more than maxItemInStock + qty
    */
   fixMaxItemStock(newCartQuantity) {
+    // debugger;
     const { qty: itemsInCart, maxItemInStock } = this.state;
     // what is total item qty
     const itemQtyCartAndWarehose = +itemsInCart + maxItemInStock;
@@ -41,7 +42,7 @@ class CartItem extends Component {
   }
 
   handleQty = ({ target }) => {
-    if (target.value <= 0) return;
+    if (target.value < 0) return;
     this.setState({ qty: this.fixMaxItemStock(target.value) });
 
     // jei bandom ivesti didesne reiksme nei liko stocke(maxItemInStock) tai norim palikti
@@ -49,7 +50,7 @@ class CartItem extends Component {
     // ir pranesti su toasty kad pasiem max item limit
 
     // cia iskviesti updateQuantity ir paduoti id ir nauja value
-    this.props.onQuantity(this.props.item._id, target.value);
+    this.props.onQuantity(this.props.item._id, this.fixMaxItemStock(target.value));
   };
 
   componentDidUpdate(prevProps, prevState) {
