@@ -41,7 +41,7 @@ class CartItem extends Component {
     return newCartQuantity;
   }
 
-  handleQty = ({ target }) => {
+  handleQty = async ({ target }) => {
     if (target.value < 0) return;
     this.setState({ qty: this.fixMaxItemStock(target.value) });
 
@@ -50,7 +50,15 @@ class CartItem extends Component {
     // ir pranesti su toasty kad pasiem max item limit
 
     // cia iskviesti updateQuantity ir paduoti id ir nauja value
-    this.props.onQuantity(this.props.item._id, this.fixMaxItemStock(target.value));
+    const updateSuccess = await this.props.onQuantity(
+      this.props.item._id,
+      this.fixMaxItemStock(target.value)
+    );
+    if (updateSuccess === true) {
+      const newStock = await this.getCurrentWarehouseStock();
+      console.log('updatedStock', newStock);
+      this.setState({ maxItemInStock: newStock });
+    }
   };
 
   componentDidUpdate(prevProps, prevState) {

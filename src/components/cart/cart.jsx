@@ -52,7 +52,8 @@ class Cart extends Component {
     if (updateOk === true) {
       // atnaujinti itemus
       console.log('ruosiames antnaujinti itemus, nes panasu kad pasikeite kiekis');
-      this.getCurrentCartItems();
+      await this.getCurrentCartItems();
+      return true;
     }
   };
 
