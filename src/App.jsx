@@ -80,6 +80,7 @@ class App extends Component {
     console.log('you have selected ', cat);
 
     const ats = await getItemsByCategory(cat);
+    console.log('item pagal cat atsakymas', ats);
     // request.js faile susikuriam funkcija kuri priima kat pavadinima kaip argumenta
     // ir daro GET uzklausa i /api/shop/items/category/:catId
     // panaudoti sia funkcija kad issiusti uzklausai is Shop.js
