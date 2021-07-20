@@ -74,6 +74,22 @@ class App extends Component {
     };
   }
 
+  // sukurti metoda kuris atspausdina kategorijos
+  // pavadinima ant kurios paspausta
+  selectCategory = async (cat) => {
+    console.log('you have selected ', cat);
+    // await getItemsByCategory(cat)
+    // request.js faile susikuriam funkcija kuri priima kat pavadinima kaip argumenta
+    // ir daro GET uzklausa i /api/shop/items/category/:catName
+    // panaudoti sia funkcija kad issiusti uzklausai is Shop.js
+
+    // backe pakurti endpointa, GET /api/shop/category/items
+    // kuris iskonsolina arpa pagrazina testini atsakyma
+
+    // panaudojam kat pavadinima
+    // kad parsiusti vietoj visu items tik tos kategorijos items
+  };
+
   componentDidUpdate(prevProps, prevState) {
     console.log('app updated');
   }
@@ -135,6 +151,7 @@ class App extends Component {
                   cartCount={cartCount}
                   onCartCount={this.handleCartCount}
                   onLogin={this.handleLogin}
+                  onSelectCategory={this.selectCategory}
                   shop={shop}
                   {...props}
                 />

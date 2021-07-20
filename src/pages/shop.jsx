@@ -25,12 +25,6 @@ class Shop extends Component {
     this.setState({ users: users });
   }
 
-  // sukurti metoda kuris atspausdina kategorijos
-  // pavadinima ant kurios paspausta
-  selectCategory = (cat) => {
-    console.log('you have selected ', cat);
-  };
-
   render() {
     const { socialLinksData, shopCategories, items, cart } = this.props.shop;
     // get cartCount prop and display
@@ -52,7 +46,11 @@ class Shop extends Component {
             <div className="categories">
               <ul>
                 {shopCategories.map((item) => (
-                  <li key={item._id} className="category-item">
+                  <li
+                    onClick={() => this.props.onSelectCategory(item.title)}
+                    key={item._id}
+                    className="category-item"
+                  >
                     {item.title}
                   </li>
                 ))}
