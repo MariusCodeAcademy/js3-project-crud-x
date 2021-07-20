@@ -25,6 +25,12 @@ class Shop extends Component {
     this.setState({ users: users });
   }
 
+  // sukurti metoda kuris atspausdina kategorijos
+  // pavadinima ant kurios paspausta
+  selectCategory = (cat) => {
+    console.log('you have selected ', cat);
+  };
+
   render() {
     const { socialLinksData, shopCategories, items, cart } = this.props.shop;
     // get cartCount prop and display
