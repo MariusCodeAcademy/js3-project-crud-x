@@ -8,7 +8,7 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import 'font-awesome/css/font-awesome.css';
 import Footer from './components/footer';
-import { getCategories, getItems, getCartCount } from './utils/requests';
+import { getCategories, getItems, getCartCount, getItemsByCategory } from './utils/requests';
 import Admin from './pages/admin';
 
 class App extends Component {
@@ -78,9 +78,10 @@ class App extends Component {
   // pavadinima ant kurios paspausta
   selectCategory = async (cat) => {
     console.log('you have selected ', cat);
-    // await getItemsByCategory(cat)
+
+    const ats = await getItemsByCategory(cat);
     // request.js faile susikuriam funkcija kuri priima kat pavadinima kaip argumenta
-    // ir daro GET uzklausa i /api/shop/items/category/:catName
+    // ir daro GET uzklausa i /api/shop/items/category/:catId
     // panaudoti sia funkcija kad issiusti uzklausai is Shop.js
 
     // backe pakurti endpointa, GET /api/shop/category/items

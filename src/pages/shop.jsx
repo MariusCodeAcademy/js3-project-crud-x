@@ -47,7 +47,7 @@ class Shop extends Component {
               <ul>
                 {shopCategories.map((item) => (
                   <li
-                    onClick={() => this.props.onSelectCategory(item.title)}
+                    onClick={() => this.props.onSelectCategory(item._id)}
                     key={item._id}
                     className="category-item"
                   >
