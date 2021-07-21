@@ -79,8 +79,12 @@ class App extends Component {
   selectCategory = async (cat) => {
     console.log('you have selected ', cat);
 
-    const ats = await getItemsByCategory(cat);
-    console.log('item pagal cat atsakymas', ats);
+    const itemsInCategory = await getItemsByCategory(cat);
+    console.log('item pagal cat atsakymas', itemsInCategory);
+
+    const shopStateCopy = { ...this.state.shop };
+    shopStateCopy.items = itemsInCategory;
+    this.setState({ shop: shopStateCopy });
     // request.js faile susikuriam funkcija kuri priima kat pavadinima kaip argumenta
     // ir daro GET uzklausa i /api/shop/items/category/:catId
     // panaudoti sia funkcija kad issiusti uzklausai is Shop.js
