@@ -1,45 +1,29 @@
-# js3-project-crud-x
+# Simple shop implementation. JS3
 
-## Final project front end with CRA
+Simple shop created in react. We do not use any context or
+redux. Passing data with props.
 
-1. // YouMayAlsoLike komponentas sukuriam komponenta
+### Features
 
-1. // itraukiam i singleItem componenta
+1. add item to cart
+2. cart item quantiry controll
+3. remove item from cart
+4. get items by category
+5. Simple pseudo Login to diferentiate users by their cart
 
-1. // viduje atvaizduoja viena eile ShopItem componentus
+## Instalation
 
-1. // nuododa veikia taip pat kaip ShopList
+1. clone reppository
+1. npm install
+1. user localhost at port 4000 for back end requests
 
-1. // footer componentas. pasirasyti jsx
+## Dev scripts
 
-1. // footer css
+1. `npm start` starts front end aplication for local development
 
-1. // footer responsive
+### Dependacies
 
-1. // cart component
-
-1. // apsirasyti statiskai kad atrodytu pan i https://themes.shopify.com/themes/simple/styles/light/preview
-
-1. // viduje sukurti cartItem.jsx componenta kuris atvaizduos kiekviena perkama preke
-
-1. // pabandyti apsirasyti kaip atrodytu cart item objektas, ir paduoti ta objekta i cart kad atvaizduoti cart items
-
-1. // remove cart turetu istrinti item is cart.
-
-1. // padaryti kad veiktu quantity kuris padidina ir pamazina kiekti ir kaina sureguoja atatinkamai
-
-// handleTotal metodas cart.jsx
-
-// galimybe ivygdyti handleTotal is cartItem atsiuncian suma
-
-// cartItem atskiras metodas kuris grazina total suma
-
-// uzd
-
-// sukurti nauja admin page
-
-// admin page ikelti addItemForm componentas
-
-// addItemForm komponente yra forma kuria supildzius pasitikrinam backende ar gaunam
-
-// pakeiciam back end kad jis sukurtu nauja itema is req.body
+- react-router
+- font-awesome@4.7
+- react-toastify
+- axios
